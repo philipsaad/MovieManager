@@ -1,10 +1,11 @@
-﻿using ByteSizeLib;
-using MediaInfo;
-using MovieManager.Lib.Classes;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+
+using MediaInfo;
+
+using MovieManager.Lib.Classes;
 
 namespace MovieManager.Lib
 {
@@ -23,7 +24,7 @@ namespace MovieManager.Lib
 
     public static int MediaFileCount(string Path)
     {
-      return new DirectoryInfo(Path).EnumerateFiles("*", SearchOption.AllDirectories).Where(file => validExtensions.Contains(file.Extension)).Count();
+      return new DirectoryInfo(Path).EnumerateFiles("*", SearchOption.AllDirectories).AsParallel().Where(file => validExtensions.Contains(file.Extension)).Count();
     }
 
     public static IEnumerable<MediaFile> Load(string Path)

@@ -32,6 +32,7 @@
       this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
       this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.openToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+      this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
       this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +43,7 @@
       this.videoCodecHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.audioCodecHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.videoResolutionHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+      this.aspectRatioHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.fileHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
       this.statusStrip = new System.Windows.Forms.StatusStrip();
       this.fileLoadProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -66,49 +68,57 @@
             this.helpToolStripMenuItem});
       this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
       this.mainMenuStrip.Name = "mainMenuStrip";
-      this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-      this.mainMenuStrip.Size = new System.Drawing.Size(1200, 25);
+      this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(8, 2, 0, 2);
+      this.mainMenuStrip.Size = new System.Drawing.Size(959, 24);
       this.mainMenuStrip.TabIndex = 0;
       this.mainMenuStrip.Text = "menuStrip1";
       // 
       // fileToolStripMenuItem
       // 
       this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openToolStripMenuItem});
+            this.openToolStripMenuItem,
+            this.exitToolStripMenuItem});
       this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 19);
-      this.fileToolStripMenuItem.Text = "File";
+      this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+      this.fileToolStripMenuItem.Text = "&File";
       // 
       // openToolStripMenuItem
       // 
       this.openToolStripMenuItem.Name = "openToolStripMenuItem";
       this.openToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
-      this.openToolStripMenuItem.Text = "Open";
+      this.openToolStripMenuItem.Text = "&Open";
       this.openToolStripMenuItem.Click += new System.EventHandler(this.openToolStripMenuItem_Click);
+      // 
+      // exitToolStripMenuItem
+      // 
+      this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+      this.exitToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+      this.exitToolStripMenuItem.Text = "E&xit";
       // 
       // optionsToolStripMenuItem
       // 
       this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 19);
-      this.optionsToolStripMenuItem.Text = "Options";
+      this.optionsToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+      this.optionsToolStripMenuItem.Text = "&Options";
       // 
       // helpToolStripMenuItem
       // 
       this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
       this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-      this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 19);
-      this.helpToolStripMenuItem.Text = "Help";
+      this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+      this.helpToolStripMenuItem.Text = "&Help";
       // 
       // aboutToolStripMenuItem
       // 
       this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
       this.aboutToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-      this.aboutToolStripMenuItem.Text = "About";
+      this.aboutToolStripMenuItem.Text = "&About";
       this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
       // 
       // mediaFileListView
       // 
+      this.mediaFileListView.AllowColumnReorder = true;
       this.mediaFileListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.fileNameHeader,
             this.fileSizeHeader,
@@ -116,17 +126,17 @@
             this.videoCodecHeader,
             this.audioCodecHeader,
             this.videoResolutionHeader,
+            this.aspectRatioHeader,
             this.fileHeader});
       this.mediaFileListView.Dock = System.Windows.Forms.DockStyle.Fill;
       this.mediaFileListView.FullRowSelect = true;
       this.mediaFileListView.GridLines = true;
-      this.mediaFileListView.HideSelection = false;
-      this.mediaFileListView.LabelWrap = false;
-      this.mediaFileListView.Location = new System.Drawing.Point(0, 25);
-      this.mediaFileListView.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.mediaFileListView.Location = new System.Drawing.Point(0, 24);
+      this.mediaFileListView.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
       this.mediaFileListView.MultiSelect = false;
       this.mediaFileListView.Name = "mediaFileListView";
-      this.mediaFileListView.Size = new System.Drawing.Size(1200, 702);
+      this.mediaFileListView.ShowGroups = false;
+      this.mediaFileListView.Size = new System.Drawing.Size(959, 555);
       this.mediaFileListView.TabIndex = 1;
       this.mediaFileListView.UseCompatibleStateImageBehavior = false;
       this.mediaFileListView.View = System.Windows.Forms.View.Details;
@@ -145,19 +155,27 @@
       // mediaQualityHeader
       // 
       this.mediaQualityHeader.Text = "Quality";
-      this.mediaQualityHeader.Width = 80;
+      this.mediaQualityHeader.Width = 70;
       // 
       // videoCodecHeader
       // 
       this.videoCodecHeader.Text = "Video Codec";
+      this.videoCodecHeader.Width = 100;
       // 
       // audioCodecHeader
       // 
       this.audioCodecHeader.Text = "Audio Codec";
+      this.audioCodecHeader.Width = 100;
       // 
       // videoResolutionHeader
       // 
       this.videoResolutionHeader.Text = "Resolution";
+      this.videoResolutionHeader.Width = 100;
+      // 
+      // aspectRatioHeader
+      // 
+      this.aspectRatioHeader.Text = "Aspect Ratio";
+      this.aspectRatioHeader.Width = 100;
       // 
       // fileHeader
       // 
@@ -169,26 +187,24 @@
       this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileLoadProgressBar,
             this.fileLoadStatusLabel});
-      this.statusStrip.Location = new System.Drawing.Point(0, 705);
+      this.statusStrip.Location = new System.Drawing.Point(0, 550);
       this.statusStrip.Name = "statusStrip";
-      this.statusStrip.Padding = new System.Windows.Forms.Padding(2, 0, 21, 0);
-      this.statusStrip.Size = new System.Drawing.Size(1200, 22);
+      this.statusStrip.Padding = new System.Windows.Forms.Padding(1, 0, 19, 0);
+      this.statusStrip.Size = new System.Drawing.Size(959, 29);
       this.statusStrip.TabIndex = 2;
-      this.statusStrip.Text = "statusStrip1";
       // 
       // fileLoadProgressBar
       // 
       this.fileLoadProgressBar.Name = "fileLoadProgressBar";
-      this.fileLoadProgressBar.Size = new System.Drawing.Size(667, 23);
+      this.fileLoadProgressBar.Size = new System.Drawing.Size(200, 23);
       this.fileLoadProgressBar.Step = 1;
       this.fileLoadProgressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
-      this.fileLoadProgressBar.Visible = false;
       // 
       // fileLoadStatusLabel
       // 
       this.fileLoadStatusLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.fileLoadStatusLabel.Name = "fileLoadStatusLabel";
-      this.fileLoadStatusLabel.Size = new System.Drawing.Size(0, 17);
+      this.fileLoadStatusLabel.Size = new System.Drawing.Size(0, 24);
       // 
       // contextMenuStrip
       // 
@@ -237,17 +253,16 @@
       // 
       // mediaManagerForm
       // 
-      this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
+      this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(1200, 727);
+      this.ClientSize = new System.Drawing.Size(959, 579);
       this.Controls.Add(this.statusStrip);
       this.Controls.Add(this.mediaFileListView);
       this.Controls.Add(this.mainMenuStrip);
-      this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.MainMenuStrip = this.mainMenuStrip;
-      this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+      this.Margin = new System.Windows.Forms.Padding(2, 6, 2, 6);
       this.Name = "mediaManagerForm";
-      this.ShowIcon = false;
       this.Text = "Media Manager";
       this.mainMenuStrip.ResumeLayout(false);
       this.mainMenuStrip.PerformLayout();
@@ -285,6 +300,8 @@
     private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
     private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
     private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+    private System.Windows.Forms.ColumnHeader aspectRatioHeader;
+    private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
   }
 }
 

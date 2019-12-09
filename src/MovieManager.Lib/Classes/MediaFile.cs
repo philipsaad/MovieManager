@@ -1,5 +1,4 @@
-﻿using MediaInfo.Model;
-using System;
+﻿using System;
 using System.IO;
 
 namespace MovieManager.Lib.Classes
@@ -56,9 +55,31 @@ namespace MovieManager.Lib.Classes
     public int Width { get; set; }
     public int Height { get; set; }
     public string FormattedResolution { get; set; }
-
-    public override string ToString() {
-      return $"{Width}×{Height}";
+    public string Dimensions
+    {
+      get
+      {
+        return $"{Width}×{Height}";
+      }
     }
+
+    public string AspectRatio
+    {
+      get
+      {
+        var gcd = GCD(Width, Height);
+        return string.Format("{0}:{1}", Width / gcd, Height / gcd);
+      }
+    }
+
+    public override string ToString()
+    {
+      return FormattedResolution;
+    }
+
+  static int GCD(int a, int b)
+  {
+    return b == 0 ? Math.Abs(a) : GCD(b, a % b);
+  }
   }
 }
